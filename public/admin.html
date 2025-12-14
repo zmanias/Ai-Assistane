@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Rounded" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="py-5">
+    
+    <div class="container" style="max-width: 900px;">
+        <div class="d-flex justify-content-between align-items-center mb-5">
+            <div class="d-flex align-items-center gap-3">
+                <span class="material-symbols-rounded text-warning fs-1">admin_panel_settings</span>
+                <div>
+                    <h2 class="fw-bold mb-0">Control Center</h2>
+                    <small class="text-secondary">Selamat datang, <span id="adminName">Admin</span></small>
+                </div>
+            </div>
+            <div class="d-flex gap-2">
+                <a href="/" class="btn btn-outline-light btn-sm d-flex align-items-center gap-1">
+                    <span class="material-symbols-rounded fs-6">chat</span> Chat
+                </a>
+                <button onclick="logout()" class="btn btn-danger btn-sm d-flex align-items-center gap-1">
+                    <span class="material-symbols-rounded fs-6">logout</span> Keluar
+                </button>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="code-wrapper p-4 d-flex justify-content-between align-items-center border-primary border-opacity-25">
+                    <div>
+                        <h6 class="text-secondary text-uppercase mb-1" style="font-size: 12px; letter-spacing: 1px;">Total Pengguna</h6>
+                        <h1 class="fw-bold mb-0" id="totalUsers">-</h1>
+                    </div>
+                    <span class="material-symbols-rounded fs-1 text-primary opacity-50">group</span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="code-wrapper p-4 d-flex justify-content-between align-items-center border-success border-opacity-25">
+                    <div>
+                        <h6 class="text-secondary text-uppercase mb-1" style="font-size: 12px; letter-spacing: 1px;">Total Percakapan</h6>
+                        <h1 class="fw-bold mb-0" id="totalChats">-</h1>
+                    </div>
+                    <span class="material-symbols-rounded fs-1 text-success opacity-50">forum</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="code-wrapper p-4">
+            <h5 class="fw-bold mb-3 d-flex align-items-center gap-2">
+                <span class="material-symbols-rounded text-info">psychology</span>
+                Konfigurasi Otak AI (System Prompt)
+            </h5>
+            <p class="text-secondary small mb-3">
+                Prompt ini akan menjadi instruksi dasar untuk semua pengguna. Gunakan untuk mengatur kepribadian, aturan, atau batasan AI.
+            </p>
+            
+            <textarea id="promptInput" class="form-control bg-dark text-light border-secondary mb-3" rows="8" placeholder="Loading prompt..."></textarea>
+            
+            <div class="d-flex justify-content-end">
+                <button onclick="savePrompt()" id="saveBtn" class="btn btn-primary d-flex align-items-center gap-2 px-4">
+                    <span class="material-symbols-rounded">save</span> Simpan Perubahan
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/admin.js"></script>
+    <script>
+        function logout() {
+            localStorage.clear();
+            window.location.href = '/login.html';
+        }
+    </script>
+</body>
+</html>

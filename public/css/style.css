@@ -1,0 +1,132 @@
+/* --- CONFIG VARIABLES --- */
+:root { 
+    --chat-bg: #fff; 
+    --bubble-user: #f0f4f9; 
+    --bubble-ai: transparent; 
+    --text-color: #1f1f1f; 
+    --code-bg: #f5f5f5; 
+    --btn-hover: #e0e0e0; 
+}
+[data-bs-theme="dark"] { 
+    --chat-bg: #131314; 
+    --bubble-user: #282a2c; 
+    --bubble-ai: transparent;
+    --text-color: #e3e3e3; 
+    --code-bg: #1e1e1e; 
+    --btn-hover: #333; 
+}
+
+body { font-family: 'Inter', sans-serif; background: var(--chat-bg); color: var(--text-color); height: 100vh; overflow: hidden; }
+.navbar { background: var(--chat-bg) !important; z-index: 100; transition: 0.3s; }
+
+/* --- CHAT CONTAINER --- */
+#chatContainer { 
+    scroll-behavior: smooth; 
+    overflow-y: auto; 
+    height: 100%;
+    padding-bottom: 120px; 
+}
+
+.chat-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 15px; 
+}
+
+/* --- BUBBLE CHAT --- */
+.message-row {
+    display: flex;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    align-items: flex-start; /* Penting agar avatar di atas */
+}
+
+/* USER (KANAN) */
+.message-row.user {
+    justify-content: flex-end;
+}
+.message-row.user .bubble {
+    background: var(--bubble-user);
+    color: var(--text-color);
+    border-radius: 1.5rem 1.5rem 0.2rem 1.5rem;
+    padding: 12px 18px;
+    max-width: 85%;
+    word-wrap: break-word;
+}
+
+/* AI (KIRI) */
+.message-row.ai {
+    justify-content: flex-start;
+    gap: 12px;
+}
+.message-row.ai .bubble {
+    background: var(--bubble-ai);
+    color: var(--text-color);
+    width: 100%; 
+    max-width: 100%;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* AVATAR AI */
+.ai-avatar {
+    flex-shrink: 0;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: rgba(13, 110, 253, 0.1); 
+    display: flex; align-items: center; justify-content: center;
+    color: #0d6efd;
+    margin-top: 2px; /* Sedikit turun agar sejajar teks */
+}
+
+/* GAMBAR DALAM CHAT */
+.bubble img { 
+    max-width: 100%; 
+    height: auto; 
+    border-radius: 10px; 
+    margin: 10px 0; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2); 
+    display: block;
+}
+
+/* --- CODE BLOCK --- */
+.code-wrapper { 
+    position: relative; background: var(--code-bg); 
+    border-radius: 8px; margin: 10px 0; border: 1px solid #333;
+    overflow: hidden; max-width: 100%; 
+}
+.copy-btn { 
+    position: absolute; top: 8px; right: 8px; font-size: 11px; 
+    background: var(--chat-bg); color: var(--text-color); border: 1px solid #555; 
+    padding: 4px 8px; border-radius: 4px; cursor: pointer; z-index: 10; opacity: 0.7; 
+}
+.copy-btn:hover { opacity: 1; }
+pre { 
+    margin: 0; padding: 15px; padding-top: 40px; color: inherit; 
+    overflow-x: auto; white-space: pre; 
+}
+code { font-family: 'Consolas', monospace; font-size: 0.85em; }
+
+/* CURSOR */
+.typing-cursor::after { 
+    content: '▋'; display: inline-block; vertical-align: baseline; 
+    animation: blink 1s step-end infinite; color: #0d6efd; margin-left: 2px; 
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+/* INPUT AREA */
+.input-area-wrapper { 
+    background: var(--chat-bg); padding: 10px 0 20px 0; 
+    transition: 0.3s; z-index: 50;
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.05);
+}
+.file-preview { 
+    display: none; padding: 5px; margin-bottom: 8px; border-radius: 8px; 
+    background: rgba(128,128,128,0.1); width: fit-content; position: relative; 
+}
+.file-preview img { height: 45px; border-radius: 4px; }
+.btn-remove-file { 
+    position: absolute; top: -5px; right: -5px; background: #dc3545; color: white; 
+    border-radius: 50%; width: 18px; height: 18px; font-size: 10px; border: none; 
+    display: flex; align-items: center; justify-content: center; 
+}

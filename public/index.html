@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fandirr AI Pro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Rounded" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="d-flex flex-column">
+
+    <nav class="navbar border-bottom px-3 py-2">
+        <div class="container-fluid" style="max-width: 900px;">
+            <span class="navbar-brand fw-bold d-flex align-items-center gap-2" style="color: var(--text-color);">
+                <span class="material-symbols-rounded text-primary">smart_toy</span> Fandirr AI
+            </span>
+            <div class="d-flex gap-2">
+                <select id="personaSelect" class="form-select form-select-sm rounded-pill bg-transparent text-body border-secondary">
+                    <option value="jarvis">🤖 Jarvis</option>
+                    <option value="felo">🌐 Felo (Internet Search)</option>
+                    <option value="sarkas">😈 Sarkas</option>
+                </select>
+                <button class="btn btn-sm btn-outline-secondary rounded-circle" onclick="toggleTheme()">
+                    <span class="material-symbols-rounded">light_mode</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid flex-grow-1 overflow-y-auto p-0" id="chatContainer">
+        <div class="container py-4" style="max-width: 800px;">
+            <div id="welcomeScreen" class="text-center mt-5 pt-5">
+                <h1 class="display-5 fw-bold text-primary">Ready.</h1>
+                <p class="opacity-75">Sistem modular siap digunakan.</p>
+            </div>
+            <div id="messagesBox" class="d-flex flex-column gap-4 mb-5 pb-5"></div>
+            <div id="scrollTarget" style="height: 1px;"></div>
+        </div>
+    </div>
+
+    <div class="fixed-bottom input-area-wrapper">
+        <div class="container" style="max-width: 800px;">
+            <div id="filePreview" class="file-preview mx-3">
+                <img id="previewImg" src="">
+                <button class="btn-remove-file" onclick="clearFile()">×</button>
+            </div>
+            <div class="input-group shadow rounded-5 overflow-hidden border border-secondary-subtle">
+                <button class="btn btn-light px-3 border-0" onclick="document.getElementById('fileInput').click()">
+                    <span class="material-symbols-rounded text-secondary">attach_file</span>
+                </button>
+                <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                <textarea id="userInput" class="form-control border-0 bg-transparent text-body shadow-none" rows="1" placeholder="Ketik pesan..."></textarea>
+                <button id="sendBtn" class="btn btn-primary px-4">
+                    <span class="material-symbols-rounded">arrow_upward</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    
+    <script type="module" src="/js/main.js"></script>
+
+</body>
+</html>
